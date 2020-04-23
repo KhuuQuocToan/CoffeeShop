@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CoffeeShop.Models;
-using CoffeeShop.Repository.Food;
-using MySql.Data.MySqlClient;
+using CoffeeShop.Domain.Repository;
 
 namespace CoffeeShop.Controllers
 {
@@ -15,19 +11,19 @@ namespace CoffeeShop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private IFoodRepository _foodRepository { get; }
+        private IExampleRepository _exampleRepository { get; }
         
    
-        public HomeController(ILogger<HomeController> logger, IFoodRepository foodRepository)
+        public HomeController(ILogger<HomeController> logger, IExampleRepository exampleRepository)
         {
             _logger = logger;
-            _foodRepository = foodRepository;
+            _exampleRepository = exampleRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var foodList = await _foodRepository.GetAllEntity();
-            return View();
+            var model = await _exampleRepository.GetAll();
+            return View(model);
         }
 
         public IActionResult Privacy()

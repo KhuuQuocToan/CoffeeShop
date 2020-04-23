@@ -1,4 +1,4 @@
-﻿namespace CoffeeShop.Entities
+﻿namespace CoffeeShop.Domain.Entities
 {
     public class FoodEntity
     {

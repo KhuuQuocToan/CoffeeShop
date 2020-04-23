@@ -1,8 +1,30 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Food";
 }
+
+@using CoffeeShop.Domain.Entities
+@model List<FoodEntity>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    <h3 class="display-4">Food List</h3>
+    <table class="table border-dark table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
