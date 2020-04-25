@@ -11,17 +11,31 @@
     <table class="table border-dark table-bordered">
         <thead>
             <tr>
-                <th scope="col">ID</th>
+                <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Price</th>
+                <th scope="col">Created By User Id</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Upated Date</th>
             </tr>
         </thead>
         <tbody>
+            @{ 
+                var index = 1;
+            }
             @foreach (var item in Model)
             {
-                <tr>
-                    <th scope="row">@item.Id</th>
-                    <td>@item.Name</td>
-                </tr>
+            <tr>
+                <th scope="row">@(index++)</th>
+                <td>@item.Name</td>
+                <td>@item.Amount</td>
+                <td>@item.Price</td>
+                <td><a asp-action="Detail" asp-controller="Staff">@item.StaffEntity.UserName</a></td>
+                <td>@item.CreatedDate</td>
+                <td>@item.LastUpdatedDate</td>
+               
+            </tr>
             }
         </tbody>
     </table>
